@@ -1,5 +1,7 @@
 # piyolog
 
+[![CI](https://github.com/ryohidaka/piyolog/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/piyolog/actions/workflows/ci.yml)
+
 ぴよログのデータフィードAPIを利用するためのクライアントライブラリ
 
 ## インストール
