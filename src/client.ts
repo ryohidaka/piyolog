@@ -1,3 +1,5 @@
+import { FeedResource } from "@/resources/feed";
+
 /**
  * ぴよログ APIクライアント
  *
@@ -11,5 +13,10 @@
  * @public
  */
 export class PiyoLog {
-  constructor() {}
+  /** データフィードリソース。 */
+  readonly feed: FeedResource;
+
+  constructor() {
+    this.feed = new FeedResource();
+  }
 }
