@@ -16,7 +16,16 @@ const validRawFeed = {
     from: "2026-09-08T03:00:00.000Z",
     to: "2026-09-09T03:00:00.000Z",
   },
-  records: [],
+  records: [
+    {
+      event_id: "example-002",
+      datetime: "2026-09-08T10:00:00.000Z",
+      type: "BreastFeeding",
+      last: "right",
+      leftTime: 300,
+      rightTime: 240,
+    },
+  ],
 };
 
 afterEach(() => {
@@ -33,7 +42,15 @@ describe("FeedResource#list", () => {
     expect(result.schemaVersion).toBe(1);
     expect(result.generatedAt).toBeInstanceOf(Date);
     expect(result.range.from).toBeInstanceOf(Date);
-    expect(result.records).toHaveLength(0);
+    expect(result.records).toHaveLength(1);
+    expect(result.records[0]).toMatchObject({
+      eventId: "example-002",
+      datetime: new Date("2026-09-08T10:00:00.000Z"),
+      type: "BreastFeeding",
+      last: "right",
+      leftTime: 300,
+      rightTime: 240,
+    });
   });
 
   it("正しいURLでリクエストする", async () => {

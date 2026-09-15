@@ -53,6 +53,24 @@ console.log(`生成時刻: ${feed.generatedAt.toISOString()}`);
 > `secret` はパスワードと同じように扱ってください。
 > 公開リポジトリやログへの出力は避け、環境変数などで管理することを推奨します。
 
+### 記録種別ごとの分岐
+
+`feed.records` は記録の種類ごとに判別可能なUnion型（`PiyoLogRecord`）です。`switch (record.type)` で分岐すると、各ケース内で `value` や `details` などのフィールドが自動的に絞り込まれます。
+
+```typescript
+import type { PiyoLogRecord } from "piyolog";
+
+function describeRecord(record: PiyoLogRecord): string {
+  switch (record.type) {
+    case "BreastFeeding":
+      return `母乳: 左${record.leftTime ?? "-"}秒`;
+
+    default:
+      return record.type;
+  }
+}
+```
+
 ### 型のimport
 
 `FeedResponse` や `FetchFeedParams` などの型は `piyolog` から直接importできます。

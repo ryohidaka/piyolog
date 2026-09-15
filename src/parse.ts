@@ -1,4 +1,4 @@
-import type { FeedResponse, PiyoLogRecord } from "@/types";
+import type { FeedResponse, PiyoLogRecord, BreastFeedingRecord } from "@/types";
 
 /**
  * データフィードAPIのレスポンス生JSON（snake_case、日時は文字列）。
@@ -73,5 +73,20 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
   const eventId = raw.event_id;
   const datetime = new Date(raw.datetime);
 
-  return { eventId, datetime };
+  switch (raw.type) {
+    /** 母乳 */
+    case "BreastFeeding": {
+      const record: BreastFeedingRecord = {
+        eventId,
+        datetime,
+        type: "BreastFeeding",
+        last: raw.last,
+        leftTime: raw.leftTime,
+        rightTime: raw.rightTime,
+      };
+      return record;
+    }
+    default:
+      return { eventId, datetime };
+  }
 }

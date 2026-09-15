@@ -6,4 +6,5 @@ export type {
   FetchFeedParams,
   PiyoLogPeriod,
   PiyoLogRecord,
+  BreastFeedingRecord,
 } from "@/types";

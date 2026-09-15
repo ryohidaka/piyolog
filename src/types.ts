@@ -45,6 +45,21 @@ interface BaseRecord {
 }
 
 /**
+ * 母乳記録。
+ *
+ * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 母乳：last / leftTime / rightTime}
+ */
+export interface BreastFeedingRecord extends BaseRecord {
+  type: "BreastFeeding";
+  /** 最後に授乳した側。順序未設定なら省略。 */
+  last?: "left" | "right";
+  /** 左の授乳時間（秒）。 */
+  leftTime?: number;
+  /** 右の授乳時間（秒）。 */
+  rightTime?: number;
+}
+
+/**
  * 育児記録1件を表す判別可能なUnion型。
  *
  * @remarks
@@ -56,7 +71,7 @@ interface BaseRecord {
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 記録に共通する項目}
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#records | 07 記録の種類と項目}
  */
-export type PiyoLogRecord = BaseRecord;
+export type PiyoLogRecord = BaseRecord | BreastFeedingRecord;
 
 /**
  * データフィードAPIレスポンス
