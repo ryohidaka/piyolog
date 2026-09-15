@@ -1,6 +1,12 @@
-# vite-plus-starter
+# piyolog
 
-A starter for creating a Vite Plus project.
+ぴよログのデータフィードAPIを利用するためのクライアントライブラリ
+
+## インストール
+
+```bash
+npm install piyolog
+```
 
 ## Contributing
 
