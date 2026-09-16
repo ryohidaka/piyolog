@@ -35,6 +35,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case "ExpressedBreastMilk":
       return `[${record.datetime.toISOString()}] 搾母乳: ${record.value?.value}${record.value?.unit}`;
 
+    case "Pumping":
+      return `[${record.datetime.toISOString()}] 搾乳: ${record.value?.value}${record.value?.unit}`;
+
     default:
       return `[${record.datetime.toISOString()}] ${record.type}`;
   }

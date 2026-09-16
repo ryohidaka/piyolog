@@ -190,6 +190,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Pumping(搾乳)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-005",
+              datetime: "2026-09-08T11:00:00.000Z",
+              type: "Pumping",
+              value: { value: 60, unit: "ml" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-005",
+          type: "Pumping",
+          value: { value: 60, unit: "ml" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T11:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-005",
+              datetime: "2026-09-08T11:00:00.000Z",
+              type: "Pumping",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Pumping", value: undefined });
+      });
+    });
+
     describe("未対応のtype", () => {
       it("typeを保持したまま共通項目のみで変換する", () => {
         const raw = {

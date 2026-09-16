@@ -92,6 +92,22 @@ export interface ExpressedBreastMilkRecord extends BaseRecord {
 }
 
 /**
+ * 搾乳記録。
+ *
+ * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 数値と単位：value}
+ */
+export interface PumpingRecord extends BaseRecord {
+  type: "Pumping";
+  /** 搾乳の量。値が未入力・0以下の場合は省略。 */
+  value?: {
+    /** 搾乳の量（ml）。正の数。 */
+    value: number;
+    /** 単位。 */
+    unit: "ml";
+  };
+}
+
+/**
  * 未対応の記録種別のためのフォールバック。
  *
  * @remarks
@@ -123,6 +139,7 @@ export type PiyoLogRecord =
   | BreastFeedingRecord
   | FormulaRecord
   | ExpressedBreastMilkRecord
+  | PumpingRecord
   | UnknownRecord;
 
 /**

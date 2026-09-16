@@ -75,6 +75,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case "ExpressedBreastMilk":
       return `搾母乳: ${record.value?.value ?? "-"}ml`;
 
+    case "Pumping":
+      return `搾乳: ${record.value?.value ?? "-"}ml`;
+
     default:
       return record.type;
   }

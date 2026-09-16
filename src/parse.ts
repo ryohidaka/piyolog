@@ -4,6 +4,7 @@ import type {
   BreastFeedingRecord,
   FormulaRecord,
   ExpressedBreastMilkRecord,
+  PumpingRecord,
 } from "@/types";
 
 /**
@@ -112,6 +113,17 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         datetime,
         type: "ExpressedBreastMilk",
         value: raw.value as ExpressedBreastMilkRecord["value"],
+      };
+      return record;
+    }
+
+    /** 搾乳 */
+    case "Pumping": {
+      const record: PumpingRecord = {
+        eventId,
+        datetime,
+        type: "Pumping",
+        value: raw.value as PumpingRecord["value"],
       };
       return record;
     }

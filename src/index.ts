@@ -9,5 +9,6 @@ export type {
   BreastFeedingRecord,
   FormulaRecord,
   ExpressedBreastMilkRecord,
+  PumpingRecord,
   UnknownRecord,
 } from "@/types";
