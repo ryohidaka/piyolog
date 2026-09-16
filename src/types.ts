@@ -60,6 +60,21 @@ export interface BreastFeedingRecord extends BaseRecord {
 }
 
 /**
+ * 未対応の記録種別のためのフォールバック。
+ *
+ * @remarks
+ * 既知の記録種別が持ちうるプロパティ（`last` / `leftTime` / `rightTime` など）を
+ * `never` として明示することで、利用者が `switch` の `default` 節や
+ * narrow前の状態でこれらのプロパティに触れてもコンパイルエラーにならないようにしている。
+ */
+export interface UnknownRecord extends BaseRecord {
+  type: string;
+  last?: never;
+  leftTime?: never;
+  rightTime?: never;
+}
+
+/**
  * 育児記録1件を表す判別可能なUnion型。
  *
  * @remarks
@@ -71,7 +86,7 @@ export interface BreastFeedingRecord extends BaseRecord {
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 記録に共通する項目}
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#records | 07 記録の種類と項目}
  */
-export type PiyoLogRecord = BaseRecord | BreastFeedingRecord;
+export type PiyoLogRecord = BreastFeedingRecord | UnknownRecord;
 
 /**
  * データフィードAPIレスポンス

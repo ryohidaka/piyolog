@@ -87,6 +87,6 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       return record;
     }
     default:
-      return { eventId, datetime };
+      return { eventId, datetime, type: raw.type };
   }
 }
