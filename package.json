@@ -32,6 +32,7 @@
     "build": "vp pack",
     "dev": "vp pack --watch",
     "test": "vp test",
+    "test:coverage": "vp test --coverage",
     "check": "vp check",
     "prepublishOnly": "vp run build",
     "prepare": "vp config"
@@ -40,6 +41,7 @@
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.2",
     "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "4.1.11",
     "bumpp": "^11.1.0",
     "piyolog": "workspace:*",
     "typescript": "^7.0.2",
