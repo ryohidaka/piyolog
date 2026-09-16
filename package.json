@@ -1,6 +1,6 @@
 {
   "name": "piyolog",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "ぴよログのデータフィードAPIを利用するためのクライアントライブラリ",
   "keywords": [
     "api",
