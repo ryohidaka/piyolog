@@ -97,5 +97,30 @@ describe("parseFeedResponse", () => {
         expect(record).toMatchObject({ type: "BreastFeeding", last: undefined });
       });
     });
+
+    describe("未対応のtype", () => {
+      it("typeを保持したまま共通項目のみで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-999",
+              datetime: "2026-09-08T07:00:00.000Z",
+              type: "Sleep",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-999",
+          type: "Sleep",
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T07:00:00.000Z"));
+      });
+    });
   });
 });

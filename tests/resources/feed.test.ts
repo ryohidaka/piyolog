@@ -92,4 +92,13 @@ describe("FeedResource#list", () => {
       "データフィードの取得に失敗しました: network down",
     );
   });
+
+  it("Errorインスタンスでない例外もメッセージに変換して送出する", async () => {
+    vi.spyOn(globalThis, "fetch").mockRejectedValue("network down");
+
+    const feed = new FeedResource();
+    await expect(feed.list({ period: "24h", feedId: "feed-1", secret: "sec-1" })).rejects.toThrow(
+      "データフィードの取得に失敗しました: network down",
+    );
+  });
 });
