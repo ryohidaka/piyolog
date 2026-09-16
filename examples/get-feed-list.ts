@@ -30,7 +30,10 @@ function describeRecord(record: PiyoLogRecord): string {
       return `[${record.datetime.toISOString()}] 母乳: 左${record.leftTime ?? "-"}秒 / 右${record.rightTime ?? "-"}秒`;
 
     case "Formula":
-      return `[${record.datetime.toISOString()}] 粉ミルク: ${record.value?.value}${record.value?.unit}`;
+      return `[${record.datetime.toISOString()}] ミルク: ${record.value?.value}${record.value?.unit}`;
+
+    case "ExpressedBreastMilk":
+      return `[${record.datetime.toISOString()}] 搾母乳: ${record.value?.value}${record.value?.unit}`;
 
     default:
       return `[${record.datetime.toISOString()}] ${record.type}`;

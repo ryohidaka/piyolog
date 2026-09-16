@@ -144,6 +144,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("ExpressedBreastMilk(搾母乳)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-004",
+              datetime: "2026-09-08T09:00:00.000Z",
+              type: "ExpressedBreastMilk",
+              value: { value: 80, unit: "ml" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-004",
+          type: "ExpressedBreastMilk",
+          value: { value: 80, unit: "ml" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T09:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-004",
+              datetime: "2026-09-08T09:00:00.000Z",
+              type: "ExpressedBreastMilk",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "ExpressedBreastMilk", value: undefined });
+      });
+    });
+
     describe("未対応のtype", () => {
       it("typeを保持したまま共通項目のみで変換する", () => {
         const raw = {

@@ -7,6 +7,7 @@ export type {
   PiyoLogPeriod,
   PiyoLogRecord,
   BreastFeedingRecord,
-  UnknownRecord,
   FormulaRecord,
+  ExpressedBreastMilkRecord,
+  UnknownRecord,
 } from "@/types";
