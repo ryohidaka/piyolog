@@ -8,4 +8,5 @@ export type {
   PiyoLogRecord,
   BreastFeedingRecord,
   UnknownRecord,
+  FormulaRecord,
 } from "@/types";

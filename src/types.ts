@@ -60,6 +60,22 @@ export interface BreastFeedingRecord extends BaseRecord {
 }
 
 /**
+ * 粉ミルク記録。
+ *
+ * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 数値と単位：value}
+ */
+export interface FormulaRecord extends BaseRecord {
+  type: "Formula";
+  /** ミルクの量。値が未入力・0以下の場合は省略。 */
+  value?: {
+    /** ミルクの量（ml）。正の数。 */
+    value: number;
+    /** 単位。 */
+    unit: "ml";
+  };
+}
+
+/**
  * 未対応の記録種別のためのフォールバック。
  *
  * @remarks
@@ -72,6 +88,7 @@ export interface UnknownRecord extends BaseRecord {
   last?: never;
   leftTime?: never;
   rightTime?: never;
+  value?: never;
 }
 
 /**
@@ -86,7 +103,7 @@ export interface UnknownRecord extends BaseRecord {
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 記録に共通する項目}
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#records | 07 記録の種類と項目}
  */
-export type PiyoLogRecord = BreastFeedingRecord | UnknownRecord;
+export type PiyoLogRecord = BreastFeedingRecord | FormulaRecord | UnknownRecord;
 
 /**
  * データフィードAPIレスポンス

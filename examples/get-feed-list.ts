@@ -28,6 +28,10 @@ function describeRecord(record: PiyoLogRecord): string {
   switch (record.type) {
     case "BreastFeeding":
       return `[${record.datetime.toISOString()}] 母乳: 左${record.leftTime ?? "-"}秒 / 右${record.rightTime ?? "-"}秒`;
+
+    case "Formula":
+      return `[${record.datetime.toISOString()}] 粉ミルク: ${record.value?.value}${record.value?.unit}`;
+
     default:
       return `[${record.datetime.toISOString()}] ${record.type}`;
   }

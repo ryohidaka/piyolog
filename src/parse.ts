@@ -1,4 +1,4 @@
-import type { FeedResponse, PiyoLogRecord, BreastFeedingRecord } from "@/types";
+import type { FeedResponse, PiyoLogRecord, BreastFeedingRecord, FormulaRecord } from "@/types";
 
 /**
  * データフィードAPIのレスポンス生JSON（snake_case、日時は文字列）。
@@ -33,6 +33,7 @@ export interface RawPiyoLogRecord {
   last?: "left" | "right";
   leftTime?: number;
   rightTime?: number;
+  value?: { value: number; unit: string };
 }
 
 /**
@@ -86,6 +87,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       };
       return record;
     }
+
+    /** ミルク */
+    case "Formula": {
+      const record: FormulaRecord = {
+        eventId,
+        datetime,
+        type: "Formula",
+        value: raw.value as FormulaRecord["value"],
+      };
+      return record;
+    }
+
     default:
       return { eventId, datetime, type: raw.type };
   }

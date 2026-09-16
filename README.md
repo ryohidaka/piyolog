@@ -69,6 +69,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case "BreastFeeding":
       return `母乳: 左${record.leftTime ?? "-"}秒`;
 
+    case "Formula":
+      return `ミルク: ${record.value?.value ?? "-"}ml`;
+
     default:
       return record.type;
   }
