@@ -1,5 +1,11 @@
 # piyolog
 
+## 0.2.1
+
+### Patch Changes
+
+- [`4e6f2d8`](https://github.com/ryohidaka/piyolog/commit/4e6f2d8698ddc446369bc01d086df5273474a2a1) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 記録種別の型定義をsrc/records/配下に分割
+
 ## 0.2.0
 
 ### Minor Changes
