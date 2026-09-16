@@ -4,6 +4,7 @@
 [![CI](https://github.com/ryohidaka/piyolog/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/piyolog/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ryohidaka/piyolog/graph/badge.svg?token=MNntzVzWfi)](https://codecov.io/gh/ryohidaka/piyolog)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ryohidaka/piyolog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ぴよログのデータフィードAPIを利用するためのクライアントライブラリ
 
@@ -117,3 +118,7 @@ try {
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## License
+
+[MIT](./LICENSE)
