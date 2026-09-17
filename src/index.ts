@@ -11,6 +11,7 @@ export type {
   FormulaRecord,
   ExpressedBreastMilkRecord,
   PumpingRecord,
+  WakeUpRecord,
   SleepRecord,
   PoopRecord,
   UnknownRecord,

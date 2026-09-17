@@ -83,6 +83,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Sleep:
       return "寝る";
 
+    case RecordType.WakeUp:
+      return "起きる";
+
     case RecordType.Poop:
       return `うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 

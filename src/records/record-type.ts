@@ -19,5 +19,6 @@ export const RecordType = {
   ExpressedBreastMilk: "ExpressedBreastMilk",
   Pumping: "Pumping",
   Sleep: "Sleep",
+  WakeUp: "WakeUp",
   Poop: "Poop",
 } as const;

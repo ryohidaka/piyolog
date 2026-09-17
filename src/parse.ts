@@ -6,6 +6,7 @@ import {
   type ExpressedBreastMilkRecord,
   type PumpingRecord,
   type SleepRecord,
+  type WakeUpRecord,
   type PoopRecord,
   RecordType,
 } from "@/types";
@@ -142,6 +143,16 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         eventId,
         datetime,
         type: RecordType.Sleep,
+      };
+      return record;
+    }
+
+    /** 起きる */
+    case RecordType.WakeUp: {
+      const record: WakeUpRecord = {
+        eventId,
+        datetime,
+        type: RecordType.WakeUp,
       };
       return record;
     }
