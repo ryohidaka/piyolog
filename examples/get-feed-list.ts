@@ -1,4 +1,4 @@
-import { PiyoLog } from "piyolog";
+import { PiyoLog, RecordType } from "piyolog";
 import type { PiyoLogRecord } from "piyolog";
 
 const piyolog = new PiyoLog();
@@ -26,19 +26,19 @@ for (const record of feed.records) {
  */
 function describeRecord(record: PiyoLogRecord): string {
   switch (record.type) {
-    case "BreastFeeding":
+    case RecordType.BreastFeeding:
       return `[${record.datetime.toISOString()}] 母乳: 左${record.leftTime ?? "-"}秒 / 右${record.rightTime ?? "-"}秒`;
 
-    case "Formula":
+    case RecordType.Formula:
       return `[${record.datetime.toISOString()}] ミルク: ${record.value?.value}${record.value?.unit}`;
 
-    case "ExpressedBreastMilk":
+    case RecordType.ExpressedBreastMilk:
       return `[${record.datetime.toISOString()}] 搾母乳: ${record.value?.value}${record.value?.unit}`;
 
-    case "Pumping":
+    case RecordType.Pumping:
       return `[${record.datetime.toISOString()}] 搾乳: ${record.value?.value}${record.value?.unit}`;
 
-    case "Poop":
+    case RecordType.Poop:
       return `[${record.datetime.toISOString()}] うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 
     default:

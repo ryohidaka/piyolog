@@ -1,11 +1,12 @@
-import type {
-  FeedResponse,
-  PiyoLogRecord,
-  BreastFeedingRecord,
-  FormulaRecord,
-  ExpressedBreastMilkRecord,
-  PumpingRecord,
-  PoopRecord,
+import {
+  type FeedResponse,
+  type PiyoLogRecord,
+  type BreastFeedingRecord,
+  type FormulaRecord,
+  type ExpressedBreastMilkRecord,
+  type PumpingRecord,
+  type PoopRecord,
+  RecordType,
 } from "@/types";
 
 /**
@@ -89,11 +90,11 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
 
   switch (raw.type) {
     /** 母乳 */
-    case "BreastFeeding": {
+    case RecordType.BreastFeeding: {
       const record: BreastFeedingRecord = {
         eventId,
         datetime,
-        type: "BreastFeeding",
+        type: RecordType.BreastFeeding,
         last: raw.last,
         leftTime: raw.leftTime,
         rightTime: raw.rightTime,
@@ -102,44 +103,44 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
     }
 
     /** ミルク */
-    case "Formula": {
+    case RecordType.Formula: {
       const record: FormulaRecord = {
         eventId,
         datetime,
-        type: "Formula",
+        type: RecordType.Formula,
         value: raw.value as FormulaRecord["value"],
       };
       return record;
     }
 
     /** 搾母乳 */
-    case "ExpressedBreastMilk": {
+    case RecordType.ExpressedBreastMilk: {
       const record: ExpressedBreastMilkRecord = {
         eventId,
         datetime,
-        type: "ExpressedBreastMilk",
+        type: RecordType.ExpressedBreastMilk,
         value: raw.value as ExpressedBreastMilkRecord["value"],
       };
       return record;
     }
 
     /** 搾乳 */
-    case "Pumping": {
+    case RecordType.Pumping: {
       const record: PumpingRecord = {
         eventId,
         datetime,
-        type: "Pumping",
+        type: RecordType.Pumping,
         value: raw.value as PumpingRecord["value"],
       };
       return record;
     }
 
     /** うんち */
-    case "Poop": {
+    case RecordType.Poop: {
       const record: PoopRecord = {
         eventId,
         datetime,
-        type: "Poop",
+        type: RecordType.Poop,
         details: raw.details as PoopRecord["details"],
       };
       return record;

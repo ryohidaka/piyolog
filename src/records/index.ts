@@ -1,3 +1,4 @@
+export { RecordType } from "@/records/record-type";
 export type { BreastFeedingRecord } from "@/records/breast-feeding";
 export type { FormulaRecord } from "@/records/formula";
 export type { ExpressedBreastMilkRecord } from "@/records/expressed-breast-milk";

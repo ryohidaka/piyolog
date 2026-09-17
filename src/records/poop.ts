@@ -1,4 +1,5 @@
 import type { BaseRecord } from "@/records/base";
+import type { RecordType } from "@/records/record-type";
 
 /**
  * うんちの量。
@@ -39,7 +40,7 @@ type PoopColor = "white" | "yellow" | "orange" | "brown" | "green" | "red" | "bl
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - うんち：details}
  */
 export interface PoopRecord extends BaseRecord {
-  type: "Poop";
+  type: typeof RecordType.Poop;
   /** うんちの詳細。すべて未設定の場合は省略。 */
   details?: {
     /** 量。 */

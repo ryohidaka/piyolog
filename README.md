@@ -68,10 +68,10 @@ import type { PiyoLogRecord } from "piyolog";
 
 function describeRecord(record: PiyoLogRecord): string {
   switch (record.type) {
-    case "BreastFeeding":
+    case RecordType.BreastFeeding:
       return `母乳: 左${record.leftTime ?? "-"}秒`;
 
-    case "Formula":
+    case RecordType.Formula:
       return `ミルク: ${record.value?.value ?? "-"}ml`;
 
     case "ExpressedBreastMilk":

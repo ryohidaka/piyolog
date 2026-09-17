@@ -1,5 +1,6 @@
 export { PiyoLog } from "@/client";
 export { FeedResource } from "@/resources/feed";
+export { RecordType } from "@/types";
 export type {
   FeedResponse,
   FeedRange,

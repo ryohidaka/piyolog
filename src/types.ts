@@ -1,5 +1,7 @@
 import type { PiyoLogRecord } from "@/records";
 
+export { RecordType } from "@/records";
+
 export type {
   PiyoLogRecord,
   BreastFeedingRecord,
