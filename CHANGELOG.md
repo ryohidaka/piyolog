@@ -1,5 +1,11 @@
 # piyolog
 
+## 0.3.1
+
+### Patch Changes
+
+- [`fc0122f`](https://github.com/ryohidaka/piyolog/commit/fc0122f50ec778e7e75ceae8663ff195274501f8) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 記録種別のtype値をRecordType定数として一元管理
+
 ## 0.3.0
 
 ### Minor Changes
