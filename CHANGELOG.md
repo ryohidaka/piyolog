@@ -1,5 +1,15 @@
 # piyolog
 
+## 0.4.0
+
+### Minor Changes
+
+- [`521b66b`](https://github.com/ryohidaka/piyolog/commit/521b66b76109d9766d381513278d5d59802e1b9f) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 寝る記録(Sleep) に対応
+
+- [`27a543d`](https://github.com/ryohidaka/piyolog/commit/27a543db44d074a9ca2c82f8b2f7edf0e4c8c868) Thanks [@ryohidaka](https://github.com/ryohidaka)! - おしっこ記録(Pee) に対応
+
+- [`5ddef80`](https://github.com/ryohidaka/piyolog/commit/5ddef8012b9f7f177c2606ff3152ebcc3c8a5e2e) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 起きる記録(WakeUp) に対応
+
 ## 0.3.1
 
 ### Patch Changes
