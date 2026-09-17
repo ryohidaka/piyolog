@@ -5,6 +5,7 @@ import type {
   FormulaRecord,
   ExpressedBreastMilkRecord,
   PumpingRecord,
+  PoopRecord,
 } from "@/types";
 
 /**
@@ -41,6 +42,11 @@ export interface RawPiyoLogRecord {
   leftTime?: number;
   rightTime?: number;
   value?: { value: number; unit: string };
+  details?: {
+    amount?: string;
+    hardness?: string;
+    color?: string;
+  };
 }
 
 /**
@@ -69,8 +75,8 @@ export function parseFeedResponse(raw: RawFeedResponse): FeedResponse {
  *
  * @remarks
  * `type` の値によって、対応する記録種別の型（{@link BreastFeedingRecord}、
- * {@link MeasurementRecord} など）に振り分ける。
- * 未知の `type` は {@link SimpleRecord} として扱う（将来のスキーマ拡張への耐性）。
+ * {@link FormulaRecord} など）に振り分ける。
+ * 未知の `type` は {@link UnknownRecord} として扱う（将来のスキーマ拡張への耐性）。
  *
  * @param raw - 記録1件分の生オブジェクト
  * @returns 変換された {@link PiyoLogRecord}
@@ -124,6 +130,17 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         datetime,
         type: "Pumping",
         value: raw.value as PumpingRecord["value"],
+      };
+      return record;
+    }
+
+    /** うんち */
+    case "Poop": {
+      const record: PoopRecord = {
+        eventId,
+        datetime,
+        type: "Poop",
+        details: raw.details as PoopRecord["details"],
       };
       return record;
     }

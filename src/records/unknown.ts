@@ -14,4 +14,5 @@ export interface UnknownRecord extends BaseRecord {
   leftTime?: never;
   rightTime?: never;
   value?: never;
+  details?: never;
 }

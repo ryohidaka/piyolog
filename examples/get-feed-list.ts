@@ -38,6 +38,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case "Pumping":
       return `[${record.datetime.toISOString()}] 搾乳: ${record.value?.value}${record.value?.unit}`;
 
+    case "Poop":
+      return `[${record.datetime.toISOString()}] うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
+
     default:
       return `[${record.datetime.toISOString()}] ${record.type}`;
   }

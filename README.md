@@ -80,6 +80,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case "Pumping":
       return `搾乳: ${record.value?.value ?? "-"}ml`;
 
+    case "Poop":
+      return `うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
+
     default:
       return record.type;
   }

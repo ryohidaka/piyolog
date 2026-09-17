@@ -236,6 +236,60 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Poop(うんち)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-003",
+              datetime: "2026-09-09T01:00:00.000Z",
+              type: "Poop",
+              details: {
+                amount: "normal",
+                hardness: "soft",
+                color: "yellow",
+              },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-003",
+          type: "Poop",
+          details: {
+            amount: "normal",
+            hardness: "soft",
+            color: "yellow",
+          },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-09T01:00:00.000Z"));
+      });
+
+      it("detailsが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-003",
+              datetime: "2026-09-09T01:00:00.000Z",
+              type: "Poop",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Poop", details: undefined });
+      });
+    });
+
     describe("未対応のtype", () => {
       it("typeを保持したまま共通項目のみで変換する", () => {
         const raw = {

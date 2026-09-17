@@ -6,6 +6,7 @@ export type {
   FormulaRecord,
   ExpressedBreastMilkRecord,
   PumpingRecord,
+  PoopRecord,
   UnknownRecord,
 } from "@/records";
 
