@@ -1,5 +1,11 @@
 # piyolog
 
+## 0.3.0
+
+### Minor Changes
+
+- [`d717898`](https://github.com/ryohidaka/piyolog/commit/d717898482e8a2029ae54ab3f97c2661b7160868) Thanks [@ryohidaka](https://github.com/ryohidaka)! - うんち記録(Poop) に対応
+
 ## 0.2.1
 
 ### Patch Changes
