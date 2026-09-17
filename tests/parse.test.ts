@@ -326,7 +326,7 @@ describe("parseFeedResponse", () => {
             {
               event_id: "example-999",
               datetime: "2026-09-08T07:00:00.000Z",
-              type: "Sleep",
+              type: "Unknown",
             },
           ],
         };
@@ -335,7 +335,7 @@ describe("parseFeedResponse", () => {
 
         expect(record).toMatchObject({
           eventId: "example-999",
-          type: "Sleep",
+          type: "Unknown",
         });
         expect(record.datetime).toEqual(new Date("2026-09-08T07:00:00.000Z"));
       });
