@@ -44,6 +44,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.WakeUp:
       return `[${record.datetime.toISOString()}] 起きる`;
 
+    case RecordType.Pee:
+      return `[${record.datetime.toISOString()}] おしっこ`;
+
     case RecordType.Poop:
       return `[${record.datetime.toISOString()}] うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 

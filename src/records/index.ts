@@ -5,6 +5,7 @@ export type { ExpressedBreastMilkRecord } from "@/records/expressed-breast-milk"
 export type { PumpingRecord } from "@/records/pumping";
 export type { SleepRecord } from "@/records/sleep";
 export type { WakeUpRecord } from "@/records/wake-up";
+export type { PeeRecord } from "@/records/pee";
 export type { PoopRecord } from "@/records/poop";
 export type { UnknownRecord } from "@/records/unknown";
 
@@ -14,6 +15,7 @@ import type { ExpressedBreastMilkRecord } from "@/records/expressed-breast-milk"
 import type { PumpingRecord } from "@/records/pumping";
 import type { SleepRecord } from "@/records/sleep";
 import type { WakeUpRecord } from "@/records/wake-up";
+import type { PeeRecord } from "@/records/pee";
 import type { PoopRecord } from "@/records/poop";
 import type { UnknownRecord } from "@/records/unknown";
 
@@ -36,5 +38,6 @@ export type PiyoLogRecord =
   | PumpingRecord
   | SleepRecord
   | WakeUpRecord
+  | PeeRecord
   | PoopRecord
   | UnknownRecord;

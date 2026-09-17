@@ -10,6 +10,7 @@ export type {
   PumpingRecord,
   SleepRecord,
   WakeUpRecord,
+  PeeRecord,
   PoopRecord,
   UnknownRecord,
 } from "@/records";

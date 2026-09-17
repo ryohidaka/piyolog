@@ -11,8 +11,9 @@ export type {
   FormulaRecord,
   ExpressedBreastMilkRecord,
   PumpingRecord,
-  WakeUpRecord,
   SleepRecord,
+  WakeUpRecord,
+  PeeRecord,
   PoopRecord,
   UnknownRecord,
 } from "@/types";
