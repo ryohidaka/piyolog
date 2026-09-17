@@ -80,6 +80,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Pumping:
       return `搾乳: ${record.value?.value ?? "-"}ml`;
 
+    case RecordType.Sleep:
+      return "寝る";
+
     case RecordType.Poop:
       return `うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 
