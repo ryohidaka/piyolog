@@ -1,5 +1,13 @@
 # piyolog
 
+## 0.5.0
+
+### Minor Changes
+
+- [`6297bb4`](https://github.com/ryohidaka/piyolog/commit/6297bb417ff7104042ef4bbc72f9ad8ed8930705) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 母乳(BreastFeeding)にvalue(ml)を追加
+
+- [`0005bd5`](https://github.com/ryohidaka/piyolog/commit/0005bd5f5fca73a864336f983e2d828d75b3550d) Thanks [@ryohidaka](https://github.com/ryohidaka)! - メモ対応を追加
+
 ## 0.4.0
 
 ### Minor Changes
