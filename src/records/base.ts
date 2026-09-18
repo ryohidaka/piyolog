@@ -6,6 +6,8 @@ export interface BaseRecord {
   eventId: string;
   /** 記録の日時。 */
   datetime: Date;
+  /** メモ。未入力・空文字・空白だけの場合は省略。最大200文字（超過時は先頭199文字＋`…`）。 */
+  memo?: string;
 }
 
 /**

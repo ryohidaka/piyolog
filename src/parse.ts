@@ -9,6 +9,7 @@ import {
   type WakeUpRecord,
   type PeeRecord,
   type PoopRecord,
+  type MemoRecord,
   RecordType,
 } from "@/types";
 
@@ -51,6 +52,7 @@ export interface RawPiyoLogRecord {
     hardness?: string;
     color?: string;
   };
+  memo?: string;
 }
 
 /**
@@ -90,6 +92,7 @@ export function parseFeedResponse(raw: RawFeedResponse): FeedResponse {
 function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
   const eventId = raw.event_id;
   const datetime = new Date(raw.datetime);
+  const memo = raw.memo;
 
   switch (raw.type) {
     /** 母乳 */
@@ -97,6 +100,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: BreastFeedingRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.BreastFeeding,
         last: raw.last,
         leftTime: raw.leftTime,
@@ -110,6 +114,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: FormulaRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.Formula,
         value: raw.value as FormulaRecord["value"],
       };
@@ -121,6 +126,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: ExpressedBreastMilkRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.ExpressedBreastMilk,
         value: raw.value as ExpressedBreastMilkRecord["value"],
       };
@@ -132,6 +138,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: PumpingRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.Pumping,
         value: raw.value as PumpingRecord["value"],
       };
@@ -143,6 +150,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: SleepRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.Sleep,
       };
       return record;
@@ -153,6 +161,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: WakeUpRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.WakeUp,
       };
       return record;
@@ -163,6 +172,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: PeeRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.Pee,
       };
       return record;
@@ -173,13 +183,25 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
       const record: PoopRecord = {
         eventId,
         datetime,
+        memo,
         type: RecordType.Poop,
         details: raw.details as PoopRecord["details"],
       };
       return record;
     }
 
+    /** メモ */
+    case RecordType.Memo: {
+      const record: MemoRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Memo,
+      };
+      return record;
+    }
+
     default:
-      return { eventId, datetime, type: raw.type };
+      return { eventId, datetime, memo, type: raw.type };
   }
 }

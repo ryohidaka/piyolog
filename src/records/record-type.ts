@@ -22,4 +22,5 @@ export const RecordType = {
   WakeUp: "WakeUp",
   Pee: "Pee",
   Poop: "Poop",
+  Memo: "Memo",
 } as const;

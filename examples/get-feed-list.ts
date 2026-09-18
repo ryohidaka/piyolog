@@ -50,6 +50,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Poop:
       return `[${record.datetime.toISOString()}] うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 
+    case RecordType.Memo:
+      return `[${record.datetime.toISOString()}] メモ: ${record.memo}`;
+
     default:
       return `[${record.datetime.toISOString()}] ${record.type}`;
   }
