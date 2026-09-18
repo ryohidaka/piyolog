@@ -27,7 +27,7 @@ for (const record of feed.records) {
 function describeRecord(record: PiyoLogRecord): string {
   switch (record.type) {
     case RecordType.BreastFeeding:
-      return `[${record.datetime.toISOString()}] 母乳: 左${record.leftTime ?? "-"}秒 / 右${record.rightTime ?? "-"}秒`;
+      return `[${record.datetime.toISOString()}] 母乳: 左${record.leftTime ?? "-"}秒 / 右${record.rightTime ?? "-"}秒 / ${record.value?.value}${record.value?.unit}`;
 
     case RecordType.Formula:
       return `[${record.datetime.toISOString()}] ミルク: ${record.value?.value}${record.value?.unit}`;

@@ -62,6 +62,10 @@ describe("parseFeedResponse", () => {
               last: "right" as const,
               leftTime: 300,
               rightTime: 240,
+              value: {
+                value: 80,
+                unit: "ml",
+              },
             },
           ],
         };
@@ -75,11 +79,15 @@ describe("parseFeedResponse", () => {
           last: "right",
           leftTime: 300,
           rightTime: 240,
+          value: {
+            value: 80,
+            unit: "ml",
+          },
         });
         expect(record.datetime).toEqual(new Date("2026-09-08T10:00:00.000Z"));
       });
 
-      it("last/leftTime/rightTimeが省略された場合もundefinedで変換する", () => {
+      it("last/leftTime/rightTime/valueが省略された場合もundefinedで変換する", () => {
         const raw = {
           schema_version: 1,
           generated_at: "2026-09-09T03:00:00.000Z",

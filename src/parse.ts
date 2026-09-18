@@ -8,8 +8,8 @@ import {
   type SleepRecord,
   type WakeUpRecord,
   type PeeRecord,
-  type PoopRecord,
   type MemoRecord,
+  type PoopRecord,
   RecordType,
 } from "@/types";
 
@@ -105,6 +105,7 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         last: raw.last,
         leftTime: raw.leftTime,
         rightTime: raw.rightTime,
+        value: raw.value as BreastFeedingRecord["value"],
       };
       return record;
     }
