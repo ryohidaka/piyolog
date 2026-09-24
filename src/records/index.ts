@@ -9,6 +9,7 @@ export type { PeeRecord } from "@/records/pee";
 export type { PoopRecord } from "@/records/poop";
 export type { TemperatureRecord } from "@/records/temperature";
 export type { HeightRecord } from "@/records/height";
+export type { WeightRecord } from "@/records/weight";
 export type { MemoRecord } from "@/records/memo";
 export type { UnknownRecord } from "@/records/unknown";
 
@@ -22,6 +23,7 @@ import type { PeeRecord } from "@/records/pee";
 import type { PoopRecord } from "@/records/poop";
 import type { TemperatureRecord } from "@/records/temperature";
 import type { HeightRecord } from "@/records/height";
+import type { WeightRecord } from "@/records/weight";
 import type { MemoRecord } from "@/records/memo";
 import type { UnknownRecord } from "@/records/unknown";
 
@@ -48,5 +50,6 @@ export type PiyoLogRecord =
   | PeeRecord
   | TemperatureRecord
   | HeightRecord
+  | WeightRecord
   | MemoRecord
   | UnknownRecord;

@@ -98,6 +98,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Height:
       return `身長: ${record.value?.value}cm`;
 
+    case RecordType.Weight:
+      return `体重: ${record.value?.value}kg`;
+
     default:
       return record.type;
   }

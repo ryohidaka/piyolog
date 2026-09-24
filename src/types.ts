@@ -14,6 +14,7 @@ export type {
   PoopRecord,
   TemperatureRecord,
   HeightRecord,
+  WeightRecord,
   MemoRecord,
   UnknownRecord,
 } from "@/records";

@@ -11,6 +11,7 @@ import {
   type PoopRecord,
   type TemperatureRecord,
   type HeightRecord,
+  type WeightRecord,
   type MemoRecord,
   RecordType,
 } from "@/types";
@@ -213,6 +214,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Height,
         value: raw.value as HeightRecord["value"],
+      };
+      return record;
+    }
+
+    /** 体重 */
+    case RecordType.Weight: {
+      const record: WeightRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Weight,
+        value: raw.value as WeightRecord["value"],
       };
       return record;
     }

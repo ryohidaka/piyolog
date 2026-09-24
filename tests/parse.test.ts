@@ -495,6 +495,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Weight(体重)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-011",
+              datetime: "2026-09-08T17:00:00.000Z",
+              type: "Weight",
+              value: { value: 6.25, unit: "kg" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-011",
+          type: "Weight",
+          value: { value: 6.25, unit: "kg" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T17:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-011",
+              datetime: "2026-09-08T17:00:00.000Z",
+              type: "Weight",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Weight", value: undefined });
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

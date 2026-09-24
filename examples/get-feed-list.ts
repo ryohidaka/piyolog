@@ -56,6 +56,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Height:
       return `[${record.datetime.toISOString()}] 身長: ${record.value?.value}${record.value?.unit}`;
 
+    case RecordType.Weight:
+      return `[${record.datetime.toISOString()}] 体重: ${record.value?.value}${record.value?.unit}`;
+
     case RecordType.Memo:
       return `[${record.datetime.toISOString()}] メモ: ${record.memo}`;
 
