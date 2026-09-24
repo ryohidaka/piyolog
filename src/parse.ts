@@ -8,9 +8,10 @@ import {
   type SleepRecord,
   type WakeUpRecord,
   type PeeRecord,
-  type MemoRecord,
   type PoopRecord,
   type TemperatureRecord,
+  type HeightRecord,
+  type MemoRecord,
   RecordType,
 } from "@/types";
 
@@ -200,6 +201,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Temperature,
         value: raw.value as TemperatureRecord["value"],
+      };
+      return record;
+    }
+
+    /** 身長 */
+    case RecordType.Height: {
+      const record: HeightRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Height,
+        value: raw.value as HeightRecord["value"],
       };
       return record;
     }

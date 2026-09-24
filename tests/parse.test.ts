@@ -449,6 +449,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Height(身長)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-010",
+              datetime: "2026-09-08T16:00:00.000Z",
+              type: "Height",
+              value: { value: 68.5, unit: "cm" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-010",
+          type: "Height",
+          value: { value: 68.5, unit: "cm" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T16:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-010",
+              datetime: "2026-09-08T16:00:00.000Z",
+              type: "Height",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Height", value: undefined });
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

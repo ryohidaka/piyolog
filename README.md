@@ -95,6 +95,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Temperature:
       return `体温: ${record.value?.value}℃`;
 
+    case RecordType.Height:
+      return `身長: ${record.value?.value}cm`;
+
     default:
       return record.type;
   }

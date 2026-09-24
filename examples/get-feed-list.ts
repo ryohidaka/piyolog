@@ -53,6 +53,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Temperature:
       return `[${record.datetime.toISOString()}] 体温: ${record.value?.value}${record.value?.unit}`;
 
+    case RecordType.Height:
+      return `[${record.datetime.toISOString()}] 身長: ${record.value?.value}${record.value?.unit}`;
+
     case RecordType.Memo:
       return `[${record.datetime.toISOString()}] メモ: ${record.memo}`;
 

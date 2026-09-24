@@ -23,5 +23,6 @@ export const RecordType = {
   Pee: "Pee",
   Poop: "Poop",
   Temperature: "Temperature",
+  Height: "Height",
   Memo: "Memo",
 } as const;
