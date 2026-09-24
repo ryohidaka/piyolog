@@ -2,7 +2,7 @@ import type { BaseRecord, MlValue } from "@/records/base";
 import type { RecordType } from "@/records/record-type";
 
 /**
- * 粉ミルク記録。
+ * ミルク記録。
  *
  * @see {@link https://www.piyolog.com/app/piyolog/data_feed/ja/#json | 06 JSONの基本仕様 - 数値と単位：value}
  */
