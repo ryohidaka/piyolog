@@ -12,6 +12,7 @@ export type {
   WakeUpRecord,
   PeeRecord,
   PoopRecord,
+  TemperatureRecord,
   MemoRecord,
   UnknownRecord,
 } from "@/records";

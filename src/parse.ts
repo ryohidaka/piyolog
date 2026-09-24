@@ -10,6 +10,7 @@ import {
   type PeeRecord,
   type MemoRecord,
   type PoopRecord,
+  type TemperatureRecord,
   RecordType,
 } from "@/types";
 
@@ -187,6 +188,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Poop,
         details: raw.details as PoopRecord["details"],
+      };
+      return record;
+    }
+
+    /** 体温 */
+    case RecordType.Temperature: {
+      const record: TemperatureRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Temperature,
+        value: raw.value as TemperatureRecord["value"],
       };
       return record;
     }

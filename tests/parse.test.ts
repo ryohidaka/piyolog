@@ -403,6 +403,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Temperature(体温)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-009",
+              datetime: "2026-09-08T15:00:00.000Z",
+              type: "Temperature",
+              value: { value: 36.7, unit: "celsius" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-009",
+          type: "Temperature",
+          value: { value: 36.7, unit: "celsius" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T15:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-009",
+              datetime: "2026-09-08T15:00:00.000Z",
+              type: "Temperature",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Temperature", value: undefined });
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

@@ -92,6 +92,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Poop:
       return `うんち: ${record.details?.amount}/${record.details?.hardness}/${record.details?.color}`;
 
+    case RecordType.Temperature:
+      return `体温: ${record.value?.value}℃`;
+
     default:
       return record.type;
   }
