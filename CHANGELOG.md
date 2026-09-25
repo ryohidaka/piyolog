@@ -1,5 +1,15 @@
 # piyolog
 
+## 0.6.0
+
+### Minor Changes
+
+- [`1ba5850`](https://github.com/ryohidaka/piyolog/commit/1ba58503027d29001d4aab45a8528cf9f360dd22) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 体重記録(Weight) に対応
+
+- [`46c9327`](https://github.com/ryohidaka/piyolog/commit/46c93278292765c4bb172f2748decf0d09d02090) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 身長記録(Height) に対応
+
+- [`f3a3237`](https://github.com/ryohidaka/piyolog/commit/f3a3237051ee7d08323bb516c7e3d2e673413b53) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 体温記録(Temperature) に対応
+
 ## 0.5.0
 
 ### Minor Changes
