@@ -1,5 +1,11 @@
 # piyolog
 
+## 0.8.0
+
+### Minor Changes
+
+- [`69c3a84`](https://github.com/ryohidaka/piyolog/commit/69c3a84634c2350034fe7b0c35758332d65b2a10) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 離乳食記録(Solid) に対応
+
 ## 0.7.0
 
 ### Minor Changes
