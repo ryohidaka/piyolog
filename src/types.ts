@@ -17,6 +17,7 @@ export type {
   WeightRecord,
   HeadRecord,
   ChestRecord,
+  FootRecord,
   MemoRecord,
   UnknownRecord,
 } from "@/records";

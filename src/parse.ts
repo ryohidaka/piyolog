@@ -14,6 +14,7 @@ import {
   type WeightRecord,
   type HeadRecord,
   type ChestRecord,
+  type FootRecord,
   type MemoRecord,
   RecordType,
 } from "@/types";
@@ -51,7 +52,7 @@ export interface RawPiyoLogRecord {
   last?: "left" | "right";
   leftTime?: number;
   rightTime?: number;
-  value?: { value: number; unit: string };
+  value?: { value: number; unit: string } | { left?: number; right?: number; unit: string };
   details?: {
     amount?: string;
     hardness?: string;
@@ -252,6 +253,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Chest,
         value: raw.value as ChestRecord["value"],
+      };
+      return record;
+    }
+
+    /** 足サイズ */
+    case RecordType.Foot: {
+      const record: FootRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Foot,
+        value: raw.value as FootRecord["value"],
       };
       return record;
     }

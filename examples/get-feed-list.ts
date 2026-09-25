@@ -65,6 +65,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Chest:
       return `[${record.datetime.toISOString()}] 胸囲: ${record.value?.value}${record.value?.unit}`;
 
+    case RecordType.Foot:
+      return `[${record.datetime.toISOString()}] 足サイズ: 左${record.value?.left}${record.value?.unit} / 右${record.value?.right}${record.value?.unit}`;
+
     case RecordType.Memo:
       return `[${record.datetime.toISOString()}] メモ: ${record.memo}`;
 

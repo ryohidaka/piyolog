@@ -633,6 +633,71 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Foot(足サイズ)", () => {
+      it("両足分を変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-014",
+              datetime: "2026-09-08T21:00:00.000Z",
+              type: "Foot",
+              value: { left: 12.3, right: 12.2, unit: "cm" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-014",
+          type: "Foot",
+          value: { left: 12.3, right: 12.2, unit: "cm" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T21:00:00.000Z"));
+      });
+
+      it("片側だけの場合もそのまま変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-014",
+              datetime: "2026-09-08T21:00:00.000Z",
+              type: "Foot",
+              value: { left: 12.3, unit: "cm" },
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Foot", value: { left: 12.3, unit: "cm" } });
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-014",
+              datetime: "2026-09-08T21:00:00.000Z",
+              type: "Foot",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Foot", value: undefined });
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

@@ -107,6 +107,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Chest:
       return `胸囲: ${record.value?.value}cm`;
 
+    case RecordType.Foot:
+      return `足サイズ: 左${record.value?.left}cm / 右${record.value?.right}cm`;
+
     default:
       return record.type;
   }
