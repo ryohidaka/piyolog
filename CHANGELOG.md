@@ -1,5 +1,15 @@
 # piyolog
 
+## 0.7.0
+
+### Minor Changes
+
+- [`5f16bea`](https://github.com/ryohidaka/piyolog/commit/5f16bea8a63a0f514cc2ae46e6f10b3503791661) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 足サイズ記録(Foot) に対応
+
+- [`71e3b88`](https://github.com/ryohidaka/piyolog/commit/71e3b88363f4735379c23c23b834c3299a526456) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 胸囲記録(Chest) に対応
+
+- [`a60651b`](https://github.com/ryohidaka/piyolog/commit/a60651b906c039374ac3e8eaaf3a6142c5b2779f) Thanks [@ryohidaka](https://github.com/ryohidaka)! - 頭囲記録(Head) に対応
+
 ## 0.6.0
 
 ### Minor Changes
