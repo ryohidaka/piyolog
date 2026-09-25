@@ -11,6 +11,7 @@ export type { TemperatureRecord } from "@/records/temperature";
 export type { HeightRecord } from "@/records/height";
 export type { WeightRecord } from "@/records/weight";
 export type { HeadRecord } from "@/records/head";
+export type { ChestRecord } from "@/records/chest";
 export type { MemoRecord } from "@/records/memo";
 export type { UnknownRecord } from "@/records/unknown";
 
@@ -26,6 +27,7 @@ import type { TemperatureRecord } from "@/records/temperature";
 import type { HeightRecord } from "@/records/height";
 import type { WeightRecord } from "@/records/weight";
 import type { HeadRecord } from "@/records/head";
+import type { ChestRecord } from "@/records/chest";
 import type { MemoRecord } from "@/records/memo";
 import type { UnknownRecord } from "@/records/unknown";
 
@@ -54,5 +56,6 @@ export type PiyoLogRecord =
   | HeightRecord
   | WeightRecord
   | HeadRecord
+  | ChestRecord
   | MemoRecord
   | UnknownRecord;

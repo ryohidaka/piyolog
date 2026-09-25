@@ -62,6 +62,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Head:
       return `[${record.datetime.toISOString()}] 頭囲: ${record.value?.value}${record.value?.unit}`;
 
+    case RecordType.Chest:
+      return `[${record.datetime.toISOString()}] 胸囲: ${record.value?.value}${record.value?.unit}`;
+
     case RecordType.Memo:
       return `[${record.datetime.toISOString()}] メモ: ${record.memo}`;
 

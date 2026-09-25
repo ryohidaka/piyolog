@@ -587,6 +587,52 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Chest(胸囲)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-013",
+              datetime: "2026-09-08T19:00:00.000Z",
+              type: "Chest",
+              value: { value: 40.2, unit: "cm" },
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-013",
+          type: "Chest",
+          value: { value: 40.2, unit: "cm" },
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T19:00:00.000Z"));
+      });
+
+      it("valueが省略された場合もundefinedで変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-013",
+              datetime: "2026-09-08T19:00:00.000Z",
+              type: "Chest",
+            },
+          ],
+        };
+
+        const record = parseFeedResponse(raw).records[0];
+        expect(record).toMatchObject({ type: "Chest", value: undefined });
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

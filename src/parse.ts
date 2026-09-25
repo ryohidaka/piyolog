@@ -13,6 +13,7 @@ import {
   type HeightRecord,
   type WeightRecord,
   type HeadRecord,
+  type ChestRecord,
   type MemoRecord,
   RecordType,
 } from "@/types";
@@ -239,6 +240,18 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Head,
         value: raw.value as HeadRecord["value"],
+      };
+      return record;
+    }
+
+    /** 胸囲 */
+    case RecordType.Chest: {
+      const record: ChestRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Chest,
+        value: raw.value as ChestRecord["value"],
       };
       return record;
     }

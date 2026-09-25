@@ -104,6 +104,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Head:
       return `頭囲: ${record.value?.value}cm`;
 
+    case RecordType.Chest:
+      return `胸囲: ${record.value?.value}cm`;
+
     default:
       return record.type;
   }
