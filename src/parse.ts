@@ -15,6 +15,7 @@ import {
   type HeadRecord,
   type ChestRecord,
   type FootRecord,
+  type SolidRecord,
   type MemoRecord,
   RecordType,
 } from "@/types";
@@ -265,6 +266,17 @@ function parseRecord(raw: RawPiyoLogRecord): PiyoLogRecord {
         memo,
         type: RecordType.Foot,
         value: raw.value as FootRecord["value"],
+      };
+      return record;
+    }
+
+    /** 離乳食 */
+    case RecordType.Solid: {
+      const record: SolidRecord = {
+        eventId,
+        datetime,
+        memo,
+        type: RecordType.Solid,
       };
       return record;
     }

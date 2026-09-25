@@ -698,6 +698,32 @@ describe("parseFeedResponse", () => {
       });
     });
 
+    describe("Solid(離乳食)", () => {
+      it("変換する", () => {
+        const raw = {
+          schema_version: 1,
+          generated_at: "2026-09-09T03:00:00.000Z",
+          range: { from: "2026-09-08T03:00:00.000Z", to: "2026-09-09T03:00:00.000Z" },
+          records: [
+            {
+              event_id: "example-015",
+              datetime: "2026-09-08T12:00:00.000Z",
+              type: "Solid",
+            },
+          ],
+        };
+
+        const result = parseFeedResponse(raw);
+        const record = result.records[0];
+
+        expect(record).toMatchObject({
+          eventId: "example-015",
+          type: "Solid",
+        });
+        expect(record.datetime).toEqual(new Date("2026-09-08T12:00:00.000Z"));
+      });
+    });
+
     describe("memo", () => {
       it("memoが入力されている場合は変換する", () => {
         const raw = {

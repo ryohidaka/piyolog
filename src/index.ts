@@ -21,6 +21,7 @@ export type {
   HeadRecord,
   ChestRecord,
   FootRecord,
+  SolidRecord,
   MemoRecord,
   UnknownRecord,
 } from "@/types";

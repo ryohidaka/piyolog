@@ -13,6 +13,7 @@ export type { WeightRecord } from "@/records/weight";
 export type { HeadRecord } from "@/records/head";
 export type { ChestRecord } from "@/records/chest";
 export type { FootRecord } from "@/records/foot";
+export type { SolidRecord } from "@/records/solid";
 export type { MemoRecord } from "@/records/memo";
 export type { UnknownRecord } from "@/records/unknown";
 
@@ -30,6 +31,7 @@ import type { WeightRecord } from "@/records/weight";
 import type { HeadRecord } from "@/records/head";
 import type { ChestRecord } from "@/records/chest";
 import type { FootRecord } from "@/records/foot";
+import type { SolidRecord } from "@/records/solid";
 import type { MemoRecord } from "@/records/memo";
 import type { UnknownRecord } from "@/records/unknown";
 
@@ -60,5 +62,6 @@ export type PiyoLogRecord =
   | HeadRecord
   | ChestRecord
   | FootRecord
+  | SolidRecord
   | MemoRecord
   | UnknownRecord;

@@ -28,5 +28,6 @@ export const RecordType = {
   Head: "Head",
   Chest: "Chest",
   Foot: "Foot",
+  Solid: "Solid",
   Memo: "Memo",
 } as const;

@@ -110,6 +110,9 @@ function describeRecord(record: PiyoLogRecord): string {
     case RecordType.Foot:
       return `足サイズ: 左${record.value?.left}cm / 右${record.value?.right}cm`;
 
+    case RecordType.Solid:
+      return "離乳食";
+
     default:
       return record.type;
   }
