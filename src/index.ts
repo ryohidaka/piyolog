@@ -18,6 +18,7 @@ export type {
   TemperatureRecord,
   HeightRecord,
   WeightRecord,
+  HeadRecord,
   MemoRecord,
   UnknownRecord,
 } from "@/types";
